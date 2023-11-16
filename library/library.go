@@ -8,7 +8,8 @@ import (
 )
 
 type LibraryFacade struct {
-	DB *sql.DB
+	DB      *sql.DB
+	BookIDs []int
 }
 
 func NewLibraryFacade(db *sql.DB) *LibraryFacade {

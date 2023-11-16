@@ -136,7 +136,7 @@ func generateRandomBookIDs(count int) []int {
 }
 
 func generateRandomAuthor(db *sql.DB) Author {
-	authors, err := getAuthors(db)
+	authors, err := GetAuthors(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -166,7 +166,7 @@ func getBookByID(db *sql.DB, bookID int) Book {
 	return book
 }
 
-func getAuthors(db *sql.DB) ([]Author, error) {
+func GetAuthors(db *sql.DB) ([]Author, error) {
 	rows, err := db.Query("SELECT id, name FROM authors")
 	if err != nil {
 		return nil, err
