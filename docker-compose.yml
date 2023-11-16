@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: "sqlite:latest"
+    volumes:
+      - ./data:/data
+    environment:
+      - SQLITE_DATABASE=test.db
+
+  app:
+    build:
+      context: .
+    depends_on:
+      - db
+    environment:
+      - DB_CONNECTION_STRING=/data/test.db
+    volumes:
+      - ./library:/go/src/your_project/library
+      - ./utils:/go/src/your_project/utils
+      - ./main.go:/go/src/your_project/main.go
